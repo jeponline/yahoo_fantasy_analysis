@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Fantasy Baseball Tracker{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Settings</h5>
+            </div>
+            <div class="card-body">
+                <h6>Authentication Status</h6>
+                <div class="mb-4">
+                    {% if auth_status %}
+                    <div class="alert alert-success">
+                        <strong>Connected to Yahoo Fantasy API!</strong>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-warning">
+                        <strong>Not connected to Yahoo Fantasy API.</strong> Please check your OAuth credentials.
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <h6>OAuth Setup Instructions</h6>
+                <div class="mb-4">
+                    <ol>
+                        <li>Go to the <a href="https://developer.yahoo.com/apps/create/" target="_blank">Yahoo Developer Network</a></li>
+                        <li>Create a new application</li>
+                        <li>Set Application Name (e.g., "Fantasy Baseball Tracker")</li>
+                        <li>Select "Installed Application" as Application Type</li>
+                        <li>Set Callback Domain to "localhost"</li>
+                        <li>Select API Permissions: "Fantasy Sports"</li>
+                        <li>Once created, note your Consumer Key and Consumer Secret</li>
+                        <li>Create an <code>oauth2.json</code> file in the <code>config</code> directory with the following structure:</li>
+                    </ol>
+                    
+                    <pre class="bg-light p-3">
+{
+    "consumer_key": "YOUR_CONSUMER_KEY",
+    "consumer_secret": "YOUR_CONSUMER_SECRET"
+}
+                    </pre>
+                    
+                    <p>The first time you run the application, it will guide you through the authentication process.</p>
+                </div>
+                
+                <h6>Data Refresh Settings</h6>
+                <div class="mb-4">
+                    <form id="scheduler-settings">
+                        <div class="mb-3">
+                            <label for="refresh-interval" class="form-label">Refresh Interval (hours)</label>
+                            <input type="number" class="form-control" id="refresh-interval" min="1" max="24" value="6">
+                            <div class="form-text">How often to automatically refresh data from Yahoo Fantasy API.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
+                    </form>
+                </div>
+                
+                <h6>Data Management</h6>
+                <div>
+                    <button id="clear-data-btn" class="btn btn-danger">Clear All Stored Data</button>
+                    <div class="form-text">This will delete all locally stored data. You can refresh it again anytime.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Scheduler settings form
+        document.getElementById('scheduler-settings').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const interval = document.getElementById('refresh-interval').value;
+            
+            fetch('/api/settings/scheduler', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ interval: interval })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Settings saved successfully!');
+                } else {
+                    alert('Error saving settings: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving settings');
+            });
+        });
+        
+        // Clear data button
+        document.getElementById('clear-data-btn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all stored data? This cannot be undone.')) {
+                fetch('/api/data/clear', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('All data cleared successfully!');
+                    } else {
+                        alert('Error clearing data: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error clearing data');
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}

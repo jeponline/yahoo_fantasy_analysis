@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-04-21T22:07:31.005043",
+  "data": {
+    "458.l.88084": [
+      {
+        "team_key": "458.l.88084.t.9",
+        "name": "Paste and Bay",
+        "rank": "1",
+        "points_for": "94.5",
+        "points_change": -0.5,
+        "points_back": 0
+      },
+      {
+        "team_key": "458.l.88084.t.8",
+        "name": "Tom Emanski",
+        "rank": "2",
+        "points_for": "82",
+        "points_change": 5,
+        "points_back": 12.5
+      },
+      {
+        "team_key": "458.l.88084.t.7",
+        "name": "Shady Rep",
+        "rank": "3",
+        "points_for": "77.5",
+        "points_change": -1.5,
+        "points_back": 17
+      },
+      {
+        "team_key": "458.l.88084.t.3",
+        "name": "IMOSCAR.COM",
+        "rank": "4",
+        "points_for": "66.5",
+        "points_change": -0.5,
+        "points_back": 28
+      },
+      {
+        "team_key": "458.l.88084.t.2",
+        "name": "Dave's Derelicts",
+        "rank": "5",
+        "points_for": "54",
+        "points_change": -2,
+        "points_back": 40.5
+      },
+      {
+        "team_key": "458.l.88084.t.5",
+        "name": "Man Skin Boots",
+        "rank": "6",
+        "points_for": "52",
+        "points_change": 2.5,
+        "points_back": 42.5
+      },
+      {
+        "team_key": "458.l.88084.t.4",
+        "name": "JEPBaseball",
+        "rank": "7",
+        "points_for": "44",
+        "points_change": 0.5,
+        "points_back": 50.5
+      },
+      {
+        "team_key": "458.l.88084.t.6",
+        "name": "RowdyRoscoe'sBitches",
+        "rank": "8",
+        "points_for": "36",
+        "points_change": -1.5,
+        "points_back": 58.5
+      },
+      {
+        "team_key": "458.l.88084.t.1",
+        "name": "Furious George",
+        "rank": "9",
+        "points_for": "33.5",
+        "points_change": -2,
+        "points_back": 61
+      }
+    ]
+  }
+}

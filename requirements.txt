@@ -1,0 +1,7 @@
+Flask
+yahoo-fantasy-api
+yahoo-oauth
+pandas
+APScheduler
+Flask-APScheduler
+python-dotenv

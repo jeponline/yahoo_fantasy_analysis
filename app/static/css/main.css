@@ -1,0 +1,63 @@
+/* Main styles for Fantasy Baseball Tracker */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Data containers */
+.data-container {
+    min-height: 200px;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 0.25rem;
+}
+
+/* Timestamp */
+.data-timestamp {
+    font-style: italic;
+}
+
+/* Table styles */
+.table-sm th,
+.table-sm td {
+    padding: 0.3rem;
+}
+
+/* Card adjustments */
+.card {
+    margin-bottom: 1.5rem;
+}
+
+/* Pre (code) adjustments */
+pre {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Tabs adjustments */
+.nav-tabs .nav-link {
+    cursor: pointer;
+}
+
+/* Button spacing */
+.btn + .btn {
+    margin-left: 0.5rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem;
+    }
+}
